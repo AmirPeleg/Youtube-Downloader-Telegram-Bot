@@ -1,10 +1,11 @@
+import sys
 from pytube import YouTube
 import os
 import webbrowser
 from pytube.exceptions import VideoUnavailable, RegexMatchError
 from telegram.ext import *
 
-API_KEY = 'ENTER TOKEN HERE'
+API_KEY = 'ENTER KEY HERE'
 words_list = ['youtube', 'youtu', 'yt']
 
 
@@ -51,7 +52,7 @@ def youtube_download(input_link, update, context):  # separate this function to 
 def already_exist(update, context):
     update.message.reply_text("File already exist!!\n"
                               "Please run the program again")
-    exit(0)
+    os.execl(sys.executable, sys.executable, *sys.argv)
 
 
 def youtube_error(update, context):
