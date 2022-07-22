@@ -31,8 +31,11 @@ List the ready features here:
 
 
 ## Screenshots
-Will be available soon
+![Example 1 - downloading](https://github.com/Kapaznik/Youtube-Audio-Downloader-Telegram-Bot/blob/master/IMG/example%201.png)
 
+![Example 2 - file already exist](https://github.com/Kapaznik/Youtube-Audio-Downloader-Telegram-Bot/blob/master/IMG/example%202.png)
+
+![Example 3 - downloaded files](https://github.com/Kapaznik/Youtube-Audio-Downloader-Telegram-Bot/blob/master/IMG/example%203.png)
 
 ## Setup
 
