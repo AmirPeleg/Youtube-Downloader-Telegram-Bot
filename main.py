@@ -44,14 +44,14 @@ def youtube_download(input_link, update, context):  # separate this function to 
                                   "--------------------------------------------\n"
                                   "--------------------------------------------\n"
                                   "--------------------------------------------\n")
-        webbrowser.open(get_file_name(input_link) + '.mp3')
+        #webbrowser.open(get_file_name(input_link) + '.mp3')
         update.message.reply_text(os.getcwd() + get_file_name(input_link) + '.mp3')
         # add telegram link to the path of the file
 
 
 def already_exist(update, context):
     update.message.reply_text("File already exist!!\n"
-                              "Please run the program again")
+                              "Please try another link")
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
