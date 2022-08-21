@@ -4,7 +4,7 @@ import os
 from pytube.exceptions import VideoUnavailable, RegexMatchError
 from telegram.ext import *
 
-API_KEY = '5559701057:AAFhU5ZWAtyoFRSeg-b4DuVIbBUlZDN2n1o'
+API_KEY = 'ENTER KEY HERE'
 words_list = ['youtube', 'youtu', 'yt']
 
 
