@@ -1,5 +1,5 @@
 # Telegram bot - download audio from any youtube video
-> This Telegram bot will help you to download audio from any video in Youtube, fast and easy!
+> This Telegram bot will help you to download audio from any video on Youtube, fast and easy!
 > Video example [_here_](https://vimeo.com/732363730)
 
 ## Table of Contents
