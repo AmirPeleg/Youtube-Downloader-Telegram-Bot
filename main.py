@@ -8,40 +8,48 @@ API_KEY = 'ENTER KEY HERE'
 words_list = ['youtube', 'youtu', 'yt']
 
 
+def download_video(yt, input_link, update, context):
+    video = yt.streams.get_highest_resolution()
+    file_format = '.mp4'
+    download_name = video.default_filename
+    check_dup(download_name, update, context)
+    out_file = video.download(output_path="")
+    messages.print_message(input_link, update, context, file_format)
+
+
+def download_audio(yt, input_link, update, context):
+    audio = yt.streams.get_audio_only()
+    file_format = '.mp3'
+    download_name = audio.default_filename
+    check_dup(download_name, update, context)
+    download_name = audio.default_filename.replace("mp4", "mp3")
+    out_file = audio.download(output_path="")
+    base, ext = os.path.splitext(out_file)
+    new_file = base + '.mp3'
+
+    os.rename(out_file, new_file)
+    messages.print_message(input_link, update, context, file_format)
+
+
 def youtube_download(input_link, update, context):
     if any(word in input_link for word in words_list):
         file_format = input_link[-3:]
-        input_link = input_link[:-3]
-        yt = YouTube(input_link)
         if file_format == 'vid':
-            video = yt.streams.get_highest_resolution()
-            file_format = '.mp4'
-            download_name = video.default_filename
-            check_dup(download_name, update, context)
-            out_file = video.download(output_path="")
-            messages.print_message(input_link, update, context, file_format)
-
+            input_link = input_link[:-3]
+            yt = YouTube(input_link)
+            download_video(yt, input_link, update, context)
         else:
-            audio = yt.streams.get_audio_only()
-            file_format = '.mp3'
-            download_name = audio.default_filename
-            check_dup(download_name,update,context)
-            download_name = audio.default_filename.replace("mp4", "mp3")
-            out_file = audio.download(output_path="")
-            base, ext = os.path.splitext(out_file)
-            new_file = base + '.mp3'
-
-            os.rename(out_file, new_file)
-            messages.print_message(input_link, update, context, file_format)
+            yt = YouTube(input_link)
+            download_audio(yt, input_link, update, context)
 
 
-        # add telegram link to the path of the file
-
-def check_dup(download_name, update,context):
+def check_dup(download_name, update, context):
     if os.path.exists(download_name):
         messages.already_exist(update, context)
-    if os.path.exists(download_name+'.mp4'):
+    if os.path.exists(download_name + '.mp4'):
         messages.already_exist(update, context)
+
+
 def youtube_error(update, context):
     update.message.reply_text("Please use only youtube video links!")
 
